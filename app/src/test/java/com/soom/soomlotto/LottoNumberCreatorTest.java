@@ -3,6 +3,7 @@ package com.soom.soomlotto;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -40,9 +41,28 @@ public class LottoNumberCreatorTest {
     public void shuffleNumberTest(){
         List<Integer> distinctNumbers = distinctNumbers(numbers);
         System.out.println(distinctNumbers);
-        Collections.shuffle(distinctNumbers, new Random());
+
+        shuffleNumbers(distinctNumbers);
+
         System.out.println(distinctNumbers);
         System.out.println(distinctNumbers.get(0));
+    }
+
+    @Test
+    public void createNumberTest(){
+        int gameCount = 5;
+        List<List<Integer>> games = new ArrayList<>();
+
+        for(int i = 0; i < gameCount; i++){
+            List<Integer> createdNumbers = createNumber();
+            Collections.sort(createdNumbers);
+
+            games.add(createdNumbers);
+        }
+
+        for(List<Integer> numbers : games){
+            System.out.println(numbers);
+        }
     }
 
     private List<Integer> distinctNumbers(List<Integer> numbers){
@@ -53,6 +73,19 @@ public class LottoNumberCreatorTest {
     }
 
     private void shuffleNumbers(List<Integer> numbers){
+        Collections.shuffle(numbers, new Random());
+    }
 
+    private List<Integer> createNumber(){
+        List<Integer> createdNumbers = new ArrayList<>();
+        int numberCount = 6;
+        List<Integer> distinctNumbers = distinctNumbers(numbers);
+        for(int i = 0; i < numberCount; i++){
+            shuffleNumbers(distinctNumbers);
+            createdNumbers.add(distinctNumbers.get(0));
+            distinctNumbers.remove(0);
+        }
+
+        return createdNumbers;
     }
 }
