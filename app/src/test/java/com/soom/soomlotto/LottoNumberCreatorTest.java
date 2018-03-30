@@ -1,5 +1,8 @@
 package com.soom.soomlotto;
 
+import android.text.TextUtils;
+
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -52,6 +55,7 @@ public class LottoNumberCreatorTest {
     public void createNumberTest(){
         int gameCount = 5;
         List<List<Integer>> games = new ArrayList<>();
+        String numberString = "";
 
         for(int i = 0; i < gameCount; i++){
             List<Integer> createdNumbers = createNumber();
@@ -61,8 +65,9 @@ public class LottoNumberCreatorTest {
         }
 
         for(List<Integer> numbers : games){
-            System.out.println(numbers);
+            numberString += StringUtils.join(numbers, " ") + "\n";
         }
+        System.out.println(numberString);
     }
 
     private List<Integer> distinctNumbers(List<Integer> numbers){
