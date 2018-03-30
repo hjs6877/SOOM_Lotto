@@ -22,6 +22,7 @@
             android:id="@+id/btn_remove_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="초기화"/>
     </LinearLayout>
 

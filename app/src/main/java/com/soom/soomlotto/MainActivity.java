@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 for(List<Integer> numbers : games){
-                    numberString += StringUtils.join(numbers, " ") + "\n\n";
+                    numberString += StringUtils.join(numbers, "   ") + "\n\n";
                 }
                 txtNumber.setText(numberString);
             }
