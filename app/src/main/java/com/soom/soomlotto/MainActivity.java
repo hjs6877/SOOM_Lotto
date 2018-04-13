@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int gameCount = 5;
-                String numberString = "";
+                String numberString = "5   13   17   18   20   34\n\n";
                 List<List<Integer>> games = new ArrayList<>();
 
                 for(int i = 0; i < gameCount; i++){
